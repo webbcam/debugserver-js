@@ -12,10 +12,11 @@ importPackage(java.io);
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/utils/json2.js");
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/utils/helpers.js");
 
-function DebugServer(cfg, port) {
+function DebugServer(cfg, socket) {
 
     this.configPath = null;
-    this.basePort = port;
+    this.serverPort = socket.getLocalPort();
+    this.serverSocket = socket;
 
     this.script = ScriptingEnvironment.instance();
 
@@ -44,8 +45,6 @@ function DebugServer(cfg, port) {
         "disconnect": disconnectCommandHandler,
         "stop": stopCommandHandler,
     };
-
-    this.serverSocket = ServerSocket(port);
 
 }
 
