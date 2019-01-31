@@ -117,12 +117,14 @@ DebugServer.prototype.run = function() {
 }
 
 DebugServer.prototype.shutdown = function() {
+    /*
     for (var session in this.debugSessions) {
         if (this.debugSessions[session]['handle'].target.isConnected()){
             this.debugSessions[session]['handle'].target.disconnect();
         }
         this.debugSessions[session]['handle'].terminate();
     }
+    */
     this.debugServer.stop();
 }
 
@@ -278,7 +280,7 @@ function terminateSessionCommandHandler(server, command) {
     } else {
         /* Wait until thread finishes */
         if (server.debugSessions[sessionName]["thread"].isAlive() ) {
-            server.debugSessions[sessionName]["thread"].interrupt();
+            //server.debugSessions[sessionName]["thread"].interrupt();
             server.debugSessions[sessionName]["socket"].close();
             server.debugSessions[sessionName]["thread"].join();
         }
