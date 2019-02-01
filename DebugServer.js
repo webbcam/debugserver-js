@@ -117,14 +117,9 @@ DebugServer.prototype.run = function() {
 }
 
 DebugServer.prototype.shutdown = function() {
-    /*
     for (var session in this.debugSessions) {
-        if (this.debugSessions[session]['handle'].target.isConnected()){
-            this.debugSessions[session]['handle'].target.disconnect();
-        }
-        this.debugSessions[session]['handle'].terminate();
+        this.terminateSession(session);
     }
-    */
     this.debugServer.stop();
 }
 
@@ -272,21 +267,29 @@ function getListOfSessionsCommandHandler(server, command) {
     return okResult({"sessions": listOfSessions});
 }
 
+DebugServer.prototype.terminateSession = function (sessionName) {
+    //  Close socket
+    if (!server.debugSessions[sessionName]["socket"].isClosed()) {
+        server.debugSessions[sessionName]["socket"].close();
+    }
+
+    if (server.debugSessions[sessionName]["thread"].isAlive() ) {
+        //server.debugSessions[sessionName]["thread"].interrupt();
+        server.debugSessions[sessionName]["thread"].join();
+    }
+
+    server.debugSessions[sessionName]["handle"].terminate();
+    delete server.debugSessions[sessionName];
+}
+
+
 function terminateSessionCommandHandler(server, command) {
     var result;
     var sessionName = command.args.name;
     if (!(server.debugSessions[sessionName])) {
         result = failResult("Session: " + sessionName + " does not exist");
     } else {
-        /* Wait until thread finishes */
-        if (server.debugSessions[sessionName]["thread"].isAlive() ) {
-            //server.debugSessions[sessionName]["thread"].interrupt();
-            server.debugSessions[sessionName]["socket"].close();
-            server.debugSessions[sessionName]["thread"].join();
-        }
-        server.debugSessions[sessionName]["handle"].terminate();
-
-        delete server.debugSessions[sessionName];
+        server.terminateSession(sessionName);
         result = okResult();
     }
 
@@ -299,7 +302,7 @@ DebugServer.prototype.createSessionThread = function (socket, session) {
         new Runnable() {
           run: function() {
               var keep_running = true;
-              while(keep_running) {
+              while (keep_running) {
 
                   try { /* Catch socket.close() from Server 'terminate' function */
                     var client = socket.accept();
@@ -371,9 +374,6 @@ DebugServer.prototype.createSessionThread = function (socket, session) {
                     session.target.disconnect();
                 }
               }
-
-            /* Close socket */
-            socket.close();
             }
           }
      );

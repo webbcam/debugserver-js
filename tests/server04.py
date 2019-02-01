@@ -29,6 +29,9 @@ def test_server_create_session(debug_server):
 
     assert_msg_ok(result)
 
+    s2.close()
+    s.close()
+
 
 def test_server_stop_session(debug_server):
     s = create_socket(connect=True)
@@ -60,15 +63,9 @@ def test_server_stop_session(debug_server):
     assert_msg_ok(result)
 
     s2.close()
-
-    time.sleep(2)   # Give time to close down
-
-    # Check that port was closed on server side
-    with pytest.raises(Exception):
-        s2 = create_socket(connect=True, port=sessionPort)
+    s.close()
 
 
-#@pytest.mark.skip
 def test_server_terminate_session(debug_server):
     s = create_socket(connect=True)
     d = {"name": "setConfig", "args": {
@@ -105,7 +102,6 @@ def test_server_terminate_session(debug_server):
     # Check that port was closed on server side
     with pytest.raises(Exception):
         s2 = create_socket(connect=True, port=sessionPort)
-
 
 def test_server_stop_and_terminate_session(debug_server):
     s = create_socket(connect=True)
@@ -203,6 +199,8 @@ def test_server_kill_with_session_open(debug_server):
     # Check we can send a command successfully
     d = {"name": "connect"}
     result = send_msg(s2, d)
+
+    s2.close()
 
     # Send kill command to server
     d = {"name": "kill"}
