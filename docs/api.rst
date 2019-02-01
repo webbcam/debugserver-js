@@ -4,7 +4,7 @@ API Reference
 =============
 
 .. note::
-    All requests and responses are in a JSON format.
+    All requests and responses are in JSON format.
 
 Requests
 --------
