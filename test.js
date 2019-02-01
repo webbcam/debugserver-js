@@ -9,7 +9,7 @@ load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/DebugServer.js");
 
 package_info = JSON.parse(readFile(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/package.json"));
 
-print(package_info.name + " (" + package_info.version + ")");
+print("--- " + package_info.name + " (" + package_info.version + ")" + " ---");
 
 config = {
     "cwd": "/path/to/repo/debugserver-js"   /* Currently not necessary */
@@ -24,10 +24,6 @@ if (this.arguments.length > 0) {
 
 var socket = ServerSocket(port);
 port = socket.getLocalPort();
-
-
-print("Test started.");
-print("Starting Debug Server...");
 
 var server = new DebugServer(config, socket);
 
