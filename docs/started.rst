@@ -23,23 +23,16 @@ Configure
 Open the file: ``run-server.sh`` and modify the ``CCS_EXE_PATH`` variable to
 reflect your machine and CCS installation location.
 
-Running
-=======
+Run
+===
 
-Open a terminal and run the ``run-server.sh`` script. Once running you can leave
-this terminal running in the background while you connect to it th
+Open a terminal and run the ``run-server.sh`` script. (Leave this terminal
+running in background)
 
 .. image:: images/debug_server.png
 
-Mac OS
-------
-
-::
-
-    ./run-server.sh 4444
-
-Linux
------
+Mac OS or Linux
+---------------
 
 ::
 
@@ -48,7 +41,29 @@ Linux
 Windows
 -------
 
+Connect
+=======
 
+Once the DebugServer is running, you can then connect to the Server's socket
+using any language that supports sockets. Here we show an example in Python:
+
+::
+
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(("localhost", 4444))
+
+
+Send Commands
+=============
+
+Commands can be sent to the Server over the socket in JSON format. Please see
+the :ref:`API<API Reference>` for a full list of commands and their format.
+
+::
+
+    cmd = json.loads({"name": "ping"})
+    s.sendall(cmd + "\n")
 
 .. External Links
 .. _Debug Server Scripting: http://software-dl.ti.com/ccs/esd/documents/users_guide/sdto_dss_handbook.html
