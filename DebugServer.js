@@ -15,8 +15,8 @@ load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/utils/helpers.js");
 function DebugServer(cfg, socket) {
 
     this.configPath = null;
-    this.serverPort = socket.getLocalPort();
     this.serverSocket = socket;
+    this.serverPort = socket.getLocalPort();
 
     this.script = ScriptingEnvironment.instance();
 
@@ -30,7 +30,7 @@ function DebugServer(cfg, socket) {
     this.debugSessions = {};
 
     this.serverHandlers = {
-        "kill": killServerCommandHandler,
+        "killServer": killServerCommandHandler,
         "setConfig": setConfigCommandHandler,
         "getConfig": getConfigCommandHandler,
         "createConfig": createConfigCommandHandler,
@@ -95,7 +95,7 @@ DebugServer.prototype.run = function() {
                     result = this.handleServerCommand(command);
 
                     /* Kill Server on request */
-                    if (command.name == "kill") {
+                    if (command.name == "killServer") {
                         keepRunning = false;
                     }
                 } catch (err) {
@@ -217,9 +217,6 @@ function getListOfCPUsCommandHandler(server, command) {
 
     return result;
 }
-
-
-
 
 function openSessionCommandHandler(server, command) {
     /* Check if session already exists/opened */

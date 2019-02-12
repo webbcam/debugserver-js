@@ -18,7 +18,8 @@ Requests
 --------
 Requests are sent to the DebugServer to execute a command. A Request will
 always have a "name" field. A Request may also have an "args" field if the
-command takes any parameters.
+command takes any parameters. The "args" field is a JSON object with its fields
+being specific to the command's arguments.
 
 +----------------+---------+----------------------------------+----------------------------+--------------------------------------+
 | Key            | Type    | Description                      | Values                     | Required                             |
@@ -50,24 +51,22 @@ or "FAIL" (failed command).
     - The "data" field is present when a successful command returns a value.
     - The "message" field is present when a command raises an error.
 
-+----------------+---------+----------------------------------+----------------------------+--------------------------------------+
-| Key            | Type    | Description                      | Values                     | Present                              |
-+================+=========+==================================+============================+======================================+
-| "state"        | String  | Result of a command              | "OK" or "FAIL"             | Always                               |
-+----------------+---------+----------------------------------+----------------------------+--------------------------------------+
-| "data"         | JSON    | Return value of a command        |                            | When a command returns a value       |
-+----------------+---------+----------------------------------+----------------------------+--------------------------------------+
-| "message"      | String  | Error message of failed command  |                            | When a command returns an error      |
-+----------------+---------+----------------------------------+----------------------------+--------------------------------------+
++----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
+| Key            | Type             | Description                      | Values                     | Present                              |
++================+==================+==================================+============================+======================================+
+| "state"        | String           | Result of a command              | "OK" or "FAIL"             | Always                               |
++----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
+| "data"         | Command specific | Return value of a command        | Depends on command         | When a command returns a value       |
++----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
+| "message"      | String           | Error message of failed command  |                            | When a command returns an error      |
++----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
 
 .. code-block:: javascript
 
     //  Success Response
     {
         "state": "OK",
-        "data": {
-            "key": "value"
-        }
+        "data": <command return value>
     }
 
 
