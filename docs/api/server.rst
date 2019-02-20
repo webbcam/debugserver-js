@@ -215,7 +215,9 @@ Returns a list of open sessions running on the DebugServer
 +----------------+-------------------------------+----------------------------------+
 | "state"        | "OK" or "FAIL"                | \-                               |
 +----------------+-------------------------------+----------------------------------+
-| "data"         | List of open sessions names   | \-                               |
+| "data"         | List of JSON objects          | \-                               |
+|                | containing open session names |                                  |
+|                | and their port number         |                                  |
 +----------------+-------------------------------+----------------------------------+
 
 .. code-block:: javascript
@@ -223,8 +225,13 @@ Returns a list of open sessions running on the DebugServer
     // Response
     {
         "state": "OK",
-        "data": ["Texas Instruments XDS110 USB Debug Probe/Cortex_M3"]
-
+        "data": [{
+            "name": "Texas Instruments XDS110 USB Debug Probe/Cortex_M3",
+            "port": 4445
+        }, {
+            "name": "Texas Instruments XDS110 USB Debug Probe/IcePick_M0",
+            "port": 4446
+        }]
     }
 
 terminateSession
@@ -242,7 +249,7 @@ Terminates the specified session.
 +================+====================+==================================+
 | **Key**        | **Value**          | **Description**                  |
 +----------------+--------------------+----------------------------------+
-| "name"         | "termianteSession" | \-                               |
+| "name"         | "terminateSession" | \-                               |
 +----------------+--------------------+----------------------------------+
 | "args"         | "name"             | Name of session to terminate     |
 +----------------+--------------------+----------------------------------+

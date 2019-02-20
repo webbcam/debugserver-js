@@ -6,7 +6,7 @@ API Reference
 Introduction
 ~~~~~~~~~~~~
 
-After connecting to the DebugServer, you can send commands in the form of
+After :ref:`connecting to the DebugServer<Connect>`, you can send commands in the form of
 :ref:`requests<Requests>`. For every :ref:`request<Requests>` sent the
 DebugServer will reply with a :ref:`response<Responses>`.
 The general format of :ref:`requests<Requests>`/:ref:`responses<Responses>` are shown below:
@@ -17,9 +17,10 @@ The general format of :ref:`requests<Requests>`/:ref:`responses<Responses>` are 
 Requests
 --------
 Requests are sent to the DebugServer to execute a command. A Request will
-always have a "name" field. A Request may also have an "args" field if the
-command takes any parameters. The "args" field is a JSON object with its fields
-being specific to the command's arguments.
+always have a "name" field.
+
+    - The "args" field is a JSON object representing the key-val arguments for the
+      command
 
 +----------------+---------+----------------------------------+----------------------------+--------------------------------------+
 | Key            | Type    | Description                      | Values                     | Required                             |
@@ -45,7 +46,7 @@ being specific to the command's arguments.
 Responses
 ---------
 Responses are sent back by the DebugServer after completing a Request. A Response
-will always have a "state" value which will either be "OK" (successful command)
+will always have a "state" field which will either be "OK" (successful command)
 or "FAIL" (failed command).
 
     - The "data" field is present when a successful command returns a value.

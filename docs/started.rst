@@ -44,7 +44,7 @@ Windows
 Connect
 =======
 
-Once the DebugServer is running, you can then connect to the Server's socket
+Once the :ref:`DebugServer is running<Run>`, you can then connect to the Server's socket
 using any language that supports sockets. Here we show an example in Python:
 
 ::
