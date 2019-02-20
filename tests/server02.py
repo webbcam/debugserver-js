@@ -7,7 +7,7 @@ import server01
 
 def test_server_kill_command(debug_server):
     s = create_socket(connect=True)
-    d = {"name": "kill"}
+    d = {"name": "killServer"}
     result = send_msg(s, d)
 
     assert_msg_ok(result)

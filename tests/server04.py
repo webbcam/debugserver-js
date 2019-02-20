@@ -203,7 +203,7 @@ def test_server_kill_with_session_open(debug_server):
     s2.close()
 
     # Send kill command to server
-    d = {"name": "kill"}
+    d = {"name": "killServer"}
     result = send_msg(s, d)
 
     assert_msg_ok(result)
@@ -230,5 +230,5 @@ def test_server_get_list_of_sessions(debug_server):
     result = send_msg(s, d)
 
     assert_msg_ok(result)
-    assert result['data']['sessions'][0]['name'] == SESSION
-    assert result['data']['sessions'][0]['port'] == sessionPort
+    assert result['data'][0]['name'] == SESSION
+    assert result['data'][0]['port'] == sessionPort

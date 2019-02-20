@@ -159,7 +159,7 @@ function setConfigCommandHandler(server, command) {
 }
 
 function getConfigCommandHandler(server, command) {
-    var data = {'path': server.configPath }
+    var data = server.configPath;
     var result = okResult(data);
 
     return result;
@@ -212,7 +212,7 @@ function getListOfCPUsCommandHandler(server, command) {
     } else {
         var cpu_list = createStringArray(server.debugServer.getListOfCPUs());
 
-        result = okResult({"cpus": cpu_list})
+        result = okResult(cpu_list)
     }
 
     return result;
@@ -261,7 +261,7 @@ function getListOfSessionsCommandHandler(server, command) {
         listOfSessions.push({"name": session, "port": server.debugSessions[session]['port']});
     }
 
-    return okResult({"sessions": listOfSessions});
+    return okResult(listOfSessions);
 }
 
 DebugServer.prototype.terminateSession = function (sessionName) {

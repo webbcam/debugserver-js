@@ -38,7 +38,7 @@ def test_server_get_config(debug_server):
     result = send_msg(s, d2)
 
     assert_msg_ok(result)
-    assert result['data']['path'] == d['args']['path']
+    assert result['data'] == d['args']['path']
 
 def test_server_get_empty_config(debug_server):
     s = create_socket(connect=True)
@@ -47,7 +47,8 @@ def test_server_get_empty_config(debug_server):
     result = send_msg(s, d)
 
     assert_msg_ok(result)
-    assert result['data']['path'] == None
+    with pytest.raises(KeyError):
+        assert result['data'] == None
 
 def test_server_create_config(debug_server):
     s = create_socket(connect=True)
@@ -197,7 +198,7 @@ def test_server_getListOfCPUs(debug_server):
     result = send_msg(s, d)
 
     assert_msg_ok(result)
-    assert SESSION in result['data']['cpus']
+    assert SESSION in result['data']
 
 def test_server_getListOfCPUs_fail(debug_server):
     s = create_socket(connect=True)

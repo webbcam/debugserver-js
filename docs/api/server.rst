@@ -54,7 +54,7 @@ Returns the ccxml file the DebugServer is using
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | "OK" or "FAIL"         | \-                               |
+| "state"        | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | String                 | Path to ccxml file               |
 +----------------+------------------------+----------------------------------+
@@ -103,6 +103,29 @@ Creates a ccxml configuration file
         }
     }
 
++----------------+------------------------+----------------------------------+
+| **Response**                                                               |
++================+========================+==================================+
+| **Key**        | **Value**              | **Description**                  |
++----------------+------------------------+----------------------------------+
+| "state"        | String                 | "OK" or "FAIL"                   |
++----------------+------------------------+----------------------------------+
+| "data"         | JSON object            | JSON object containing name of   |
+|                |                        | ccxml file and directory         |
++----------------+------------------------+----------------------------------+
+
+.. code-block:: javascript
+
+    // Response
+    {
+        "state": "OK",
+        "data": {
+            "name": "config.ccxml",
+            "directory": "/home/user/ti/CCSTargetConfigurations"
+        }
+    }
+
+
 getListOfCPUs
 -------------
 
@@ -130,9 +153,9 @@ Returns a list of CPU names which can be used for starting a session.
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | "OK" or "FAIL"         | \-                               |
+| "state"        | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
-| "data"         | List of CPU names      | \-                               |
+| "data"         | Array                  | List of CPU names                |
 +----------------+------------------------+----------------------------------+
 
 .. code-block:: javascript
@@ -173,7 +196,7 @@ Opens a session for the given CPU
 +================+====================+==================================+
 | **Key**        | **Value**          | **Description**                  |
 +----------------+--------------------+----------------------------------+
-| "state"        | "OK" or "FAIL"     | \-                               |
+| "state"        | String             | "OK" or "FAIL"                   |
 +----------------+--------------------+----------------------------------+
 | "data"         | Integer            | Port number session opened on    |
 +----------------+--------------------+----------------------------------+
@@ -213,11 +236,11 @@ Returns a list of open sessions running on the DebugServer
 +================+===============================+==================================+
 | **Key**        | **Value**                     | **Description**                  |
 +----------------+-------------------------------+----------------------------------+
-| "state"        | "OK" or "FAIL"                | \-                               |
+| "state"        | String                        | "OK" or "FAIL"                   |
 +----------------+-------------------------------+----------------------------------+
-| "data"         | List of JSON objects          | \-                               |
-|                | containing open session names |                                  |
-|                | and their port number         |                                  |
+| "data"         | Array of JSON objects         | List of JSON objects             |
+|                |                               | containing open session names    |
+|                |                               | and their port number            |
 +----------------+-------------------------------+----------------------------------+
 
 .. code-block:: javascript
