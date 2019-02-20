@@ -52,7 +52,7 @@ def test_server_get_empty_config(debug_server):
 
 def test_server_create_config(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "connection": CONNECTION,
@@ -70,7 +70,7 @@ def test_server_create_config(debug_server):
 
 def test_server_create_config_missing_connection(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "device": DEVICETYPE,
@@ -86,7 +86,7 @@ def test_server_create_config_missing_connection(debug_server):
 
 def test_server_create_config_missing_device_and_board(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "connection": CONNECTION,
@@ -102,7 +102,7 @@ def test_server_create_config_missing_device_and_board(debug_server):
 
 def test_server_create_config_missing_name(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "connection": CONNECTION,
@@ -118,7 +118,7 @@ def test_server_create_config_missing_name(debug_server):
 
 def test_server_create_config_bad_connection(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "connection": "BAD_CONNECTION",
@@ -135,7 +135,7 @@ def test_server_create_config_bad_connection(debug_server):
 
 def test_server_create_config_bad_device(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "connection": CONNECTION,
@@ -152,7 +152,7 @@ def test_server_create_config_bad_device(debug_server):
 
 def test_server_create_config_bad_board(debug_server):
     s = create_socket(connect=True)
-    directory = HOME + "/Develop/tiflash/"
+    directory = HOME + "/Develop/debugserver-js/"
     name = "TEST.ccxml"
     d = {"name": "createConfig", "args": {
             "connection": CONNECTION,

@@ -6,6 +6,7 @@
 
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/utils/json2.js");
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/DebugServer.js");
+load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/handlers.js");
 
 package_info = JSON.parse(readFile(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/package.json"));
 
@@ -26,6 +27,7 @@ var socket = ServerSocket(port);
 port = socket.getLocalPort();
 
 var server = new DebugServer(config, socket);
+server.addSessionHandlers(sessionHandlers);
 
 print("Debug Server started on port: " + port + ".");
 
