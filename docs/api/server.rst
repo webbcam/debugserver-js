@@ -2,6 +2,8 @@
 
 Server commands are sent to the server socket.
 
+.. _server-setConfig:
+
 setConfig
 ---------
 
@@ -26,6 +28,8 @@ Sets the ccxml file for the DebugServer to use
             "path": "/path/to/config.ccxml"
         }
     }
+
+.. _server-getConfig:
 
 getConfig
 ---------
@@ -66,6 +70,8 @@ Returns the ccxml file the DebugServer is using
         "state": "OK",
         "data": "/path/to/config.ccxml"
     }
+
+.. _server-createConfig:
 
 createConfig
 ------------
@@ -126,6 +132,8 @@ Creates a ccxml configuration file
     }
 
 
+.. _server-getListOfCPUs:
+
 getListOfCPUs
 -------------
 
@@ -165,6 +173,8 @@ Returns a list of CPU names which can be used for starting a session.
         "state": "OK",
         "data": ["Cortex_M3", "Cortex_M0"]
     }
+
+.. _server-openSession:
 
 openSession
 -----------
@@ -208,6 +218,8 @@ Opens a session for the given CPU
         "state": "OK",
         "data": 4444
     }
+
+.. _server-getListOfSessions:
 
 getListOfSessions
 -----------------
@@ -257,6 +269,8 @@ Returns a list of open sessions running on the DebugServer
         }]
     }
 
+.. _server-terminateSession:
+
 terminateSession
 ----------------
 
@@ -286,6 +300,8 @@ Terminates the specified session.
             "name": "Texas Instruments XDS110 USB Debug Probe/Cortex_M3"
         }
     }
+
+.. _server-killServer:
 
 killServer
 ----------

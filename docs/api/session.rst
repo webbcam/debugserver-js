@@ -3,13 +3,87 @@
 Session commands are sent to the session socket.
 
 .. warning::
-    You must first :ref:`open a session<openSession>` on the DebugServer before sending any session
+    You must first :ref:`open a session<server-openSession>` on the DebugServer before sending any session
     commands.
+
+.. _session-stop:
+
+stop
+----
+
+Stop the session thread (does not :ref:`terminate session<server-terminateSession>`)
+
++----------------+---------------+----------------------------------+
+| **Request**                                                       |
++================+===============+==================================+
+| **Key**        | **Value**     | **Description**                  |
++----------------+---------------+----------------------------------+
+| "name"         | "stop"        | \-                               |
++----------------+---------------+----------------------------------+
+| "args"         | \-            | \-                               |
++----------------+---------------+----------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "stop"
+    }
+
+.. _session-connect:
+
+connect
+-------
+
+Connect to the target
+
++----------------+---------------+----------------------------------+
+| **Request**                                                       |
++================+===============+==================================+
+| **Key**        | **Value**     | **Description**                  |
++----------------+---------------+----------------------------------+
+| "name"         | "connect"     | \-                               |
++----------------+---------------+----------------------------------+
+| "args"         | \-            | \-                               |
++----------------+---------------+----------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "connect"
+    }
+
+.. _session-disconnect:
+
+disconnect
+----------
+
+Disconnect from the target
+
++----------------+---------------+----------------------------------+
+| **Request**                                                       |
++================+===============+==================================+
+| **Key**        | **Value**     | **Description**                  |
++----------------+---------------+----------------------------------+
+| "name"         | "disconnect"  | \-                               |
++----------------+---------------+----------------------------------+
+| "args"         | \-            | \-                               |
++----------------+---------------+----------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "disconnect"
+    }
+
+.. _session-erase:
 
 erase
 -----
 
-Erases flash on target (must be connected)
+Erases flash on target (must be :ref:`connected<session-connect>`)
 
 +----------------+---------------+----------------------------------+
 | **Request**                                                       |
