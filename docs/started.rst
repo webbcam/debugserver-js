@@ -10,8 +10,6 @@ You will need to have `Code Composer Studio`_ installed along with drivers
 for any devices you plan to use (offered during installation of CCS or
 available in CCS’s Resource Explorer).
 
-.. _started-install:
-
 Install
 =======
 
@@ -19,15 +17,11 @@ Install
 
     git clone https://github.com/webbcam/debugserver-js.git
 
-.. _started-configure:
-
 Configure
 =========
 
 Open the file: ``run-server.sh`` and modify the ``CCS_EXE_PATH`` variable to
 reflect your machine and CCS installation location.
-
-.. _started-run:
 
 Launch
 ======
@@ -47,12 +41,10 @@ Mac OS or Linux
 Windows
 -------
 
-.. _started-connect:
-
 Connecting
 ==========
 
-Once the :ref:`DebugServer is running<started-run>`, you can then connect to the Server's socket
+Once the :ref:`DebugServer is running<started:launch>`, you can then connect to the Server's socket
 using any language that supports sockets. Here we show an example in Python:
 
 ::
@@ -61,8 +53,6 @@ using any language that supports sockets. Here we show an example in Python:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(("localhost", 4444))
 
-
-.. _started-send:
 
 Sending Commands
 ================

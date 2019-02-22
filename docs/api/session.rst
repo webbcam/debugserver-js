@@ -1,36 +1,17 @@
 .. _session:
 
-Session commands are sent to the session socket.
+Session commands are sent over a socket connected to the respective session port
+(received when :ref:`opening a session<api:opensession>`)
 
 .. warning::
-    You must first :ref:`open a session<server-openSession>` on the DebugServer before sending any session
-    commands.
+    You must first :ref:`open a session<api:opensession>` on the DebugServer
+    and connect to it over a socket before sending any session commands.
 
-.. _session-stop:
+.. contents:: Command List:
+    :local:
+    :backlinks: top
 
-stop
 ----
-
-Stop the session thread (does not :ref:`terminate session<server-terminateSession>`)
-
-+----------------+---------------+----------------------------------+
-| **Request**                                                       |
-+================+===============+==================================+
-| **Key**        | **Value**     | **Description**                  |
-+----------------+---------------+----------------------------------+
-| "name"         | "stop"        | \-                               |
-+----------------+---------------+----------------------------------+
-| "args"         | \-            | \-                               |
-+----------------+---------------+----------------------------------+
-
-.. code-block:: javascript
-
-    //  Request
-    {
-        "name": "stop"
-    }
-
-.. _session-connect:
 
 connect
 -------
@@ -54,8 +35,6 @@ Connect to the target
         "name": "connect"
     }
 
-.. _session-disconnect:
-
 disconnect
 ----------
 
@@ -78,12 +57,10 @@ Disconnect from the target
         "name": "disconnect"
     }
 
-.. _session-erase:
-
 erase
 -----
 
-Erases flash on target (must be :ref:`connected<session-connect>`)
+Erases flash on target (must be :ref:`connected<api:connect>`)
 
 +----------------+---------------+----------------------------------+
 | **Request**                                                       |
@@ -100,5 +77,27 @@ Erases flash on target (must be :ref:`connected<session-connect>`)
     //  Request
     {
         "name": "erase"
+    }
+
+stop
+----
+
+Stop the session thread (does not :ref:`terminate session<api:terminatesession>`)
+
++----------------+---------------+----------------------------------+
+| **Request**                                                       |
++================+===============+==================================+
+| **Key**        | **Value**     | **Description**                  |
++----------------+---------------+----------------------------------+
+| "name"         | "stop"        | \-                               |
++----------------+---------------+----------------------------------+
+| "args"         | \-            | \-                               |
++----------------+---------------+----------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "stop"
     }
 

@@ -6,15 +6,13 @@ API Reference
 Introduction
 ~~~~~~~~~~~~
 
-After :ref:`connecting to the DebugServer<started-connect>`, you can send commands in the form of
-:ref:`requests<api-requests>`. For every :ref:`request<api-requests>` sent the
-DebugServer will reply with a :ref:`response<api-responses>`.
-The general format of :ref:`requests<api-requests>`/:ref:`responses<api-responses>` are shown below:
+After :ref:`connecting to the DebugServer<started:connecting>`, you can send commands in the form of
+:ref:`requests<api:requests>`. For every :ref:`request<api:requests>` sent the
+DebugServer will reply with a :ref:`response<api:responses>`.
+The general format of :ref:`requests<api:requests>`/:ref:`responses<api:responses>` are shown below:
 
 .. note::
     All requests and responses are in JSON format.
-
-.. _api-requests:
 
 Requests
 --------
@@ -44,8 +42,6 @@ always have a "name" field.
     }
 
 ----
-
-.. _api-responses:
 
 Responses
 ---------
@@ -87,6 +83,8 @@ Server Commands
 ~~~~~~~~~~~~~~~
 
 .. include:: api/server.rst
+
+----
 
 Session Commands
 ~~~~~~~~~~~~~~~~
