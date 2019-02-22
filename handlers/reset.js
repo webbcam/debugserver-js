@@ -1,19 +1,19 @@
 /**
- * erase.js - Erase include file that contains the erase handler command used
+ * reset.js - Reset include file that contains the reset handler command used
  * by handlers.js
  */
 
 
 /**
- * Erase function for erasing device's entire flash
+ * Reset function for (board) resetting device
 
  * @param {session} DSS Session object
  * @param {command} JSON object containing command name and args
  */
-function eraseCommandHandler(session, command) {
+function resetCommandHandler(session, command) {
     if (session.target.isConnected()) {
         try {
-            session.flash.erase();
+            session.target.reset();
         } catch (err) {
             return failResult(String(err));
         }
