@@ -99,6 +99,9 @@ html_static_path = ['.static']
 #
 # html_sidebars = {}
 
+# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
+#
+html_show_copyright = False
 
 # -- Options for HTMLHelp output ---------------------------------------------
 

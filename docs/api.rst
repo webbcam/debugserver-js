@@ -12,7 +12,7 @@ DebugServer will reply with a :ref:`response<api:responses>`.
 The general format of :ref:`requests<api:requests>`/:ref:`responses<api:responses>` are shown below:
 
 .. note::
-    All requests and responses are in JSON format.
+    All :ref:`requests<api:requests>` and :ref:`responses<api:responses>` are in JSON format.
 
 Requests
 --------
