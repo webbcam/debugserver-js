@@ -18,6 +18,8 @@ API for formatting your commands.
 
    started
    api
+   license
+   disclaimer
 
 .. External Links
 .. _Debug Server: http://software-dl.ti.com/ccs/esd/documents/users_guide/sdto_dss_handbook.html

@@ -41,6 +41,10 @@ Mac OS or Linux
 Windows
 -------
 
+::
+
+    ./run-server.bat 4444
+
 Connecting
 ==========
 
