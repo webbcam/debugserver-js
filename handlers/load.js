@@ -1,11 +1,11 @@
 /**
- * flash.js - Flash include file that contains the flash handler command used
+ * load.js - Load include file that contains the load handler command used
  * by handlers.js
  */
 
 
 /**
- * Flash function for loading an image into a device's flash
+ * Load function for loading an image into a device's load
 
  * @param {session} DSS Session object
  * @param {command} JSON object containing command name and args
@@ -13,7 +13,7 @@
           {command.args.binary} (Boolean): use binary load (default = false)
           {command.args.address} (Num): Address to load binary image (required if binary = true)
  */
-function flashCommandHandler(session, command) {
+function loadCommandHandler(session, command) {
     if (session.target.isConnected()) {
         try {
             if (command.args['binary'] == true) {

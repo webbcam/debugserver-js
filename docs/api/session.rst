@@ -60,7 +60,7 @@ Disconnect from the target
 erase
 -----
 
-Erases flash on target (must be :ref:`connected<api:connect>`)
+Erases load on target (must be :ref:`connected<api:connect>`)
 
 +----------------+---------------+----------------------------------+
 | **Request**                                                       |
@@ -101,17 +101,17 @@ Resets device (must be :ref:`connected<api:connect>`)
         "name": "reset"
     }
 
-flash
+load
 -----
 
-Loads image into device's flash (must be :ref:`connected<api:connect>`)
+Loads image into device's load (must be :ref:`connected<api:connect>`)
 
 +----------------+---------------+----------------------------------------------------+
 | **Request**                                                                         |
 +================+===============+====================================================+
 | **Key**        | **Value**     | **Description**                                    |
 +----------------+---------------+----------------------------------------------------+
-| "name"         | "flash"       | \-                                                 |
+| "name"         | "load"       | \-                                                  |
 +----------------+---------------+----------------------------------------------------+
 | "args"         | "image"       | Path to image to load                              |
 |                +---------------+----------------------------------------------------+
@@ -124,7 +124,7 @@ Loads image into device's flash (must be :ref:`connected<api:connect>`)
 
     //  Request
     {
-        "name": "flash",
+        "name": "load",
         "args": {
             "image": "/path/to/image.hex"
         }
@@ -132,7 +132,7 @@ Loads image into device's flash (must be :ref:`connected<api:connect>`)
 
     //  Request (binary)
     {
-        "name": "flash",
+        "name": "load",
         "args": {
             "image": "/path/to/image.bin",
             "binary": true,

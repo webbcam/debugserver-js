@@ -6,14 +6,14 @@ from test_helpers import (create_socket, send_msg, assert_msg_ok, assert_msg_fai
 from test_setup import RESOURCES_PATH, CCXML_PATH, CONNECTION, DEVICETYPE, SESSION
 
 
-def test_session_basic_flash(debug_server):
+def test_session_basic_load(debug_server):
     s = start_server()
     s2 = start_session(s)
 
     connect_to_target(s2)
 
     d = {
-        "name": "flash",
+        "name": "load",
         "args": {
             "image": RESOURCES_PATH + "/sensor_cc1350lp.hex"
         }
@@ -30,14 +30,14 @@ def test_session_basic_flash(debug_server):
     kill_server(s)
     s.close()
 
-def test_session_flash_binary(debug_server):
+def test_session_load_binary(debug_server):
     s = start_server()
     s2 = start_session(s)
 
     connect_to_target(s2)
 
     d = {
-        "name": "flash",
+        "name": "load",
         "args": {
             "image": RESOURCES_PATH + "/sensor_cc1350lp.bin",
             "binary": True,
@@ -56,11 +56,11 @@ def test_session_flash_binary(debug_server):
     kill_server(s)
     s.close()
 
-def test_session_flash_with_no_connection(debug_server):
+def test_session_load_with_no_connection(debug_server):
     s = start_server()
     s2 = start_session(s)
 
-    d = {"name": "flash"}
+    d = {"name": "load"}
     result = send_msg(s2, d)
 
 
