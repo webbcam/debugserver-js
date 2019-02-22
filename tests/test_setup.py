@@ -6,6 +6,7 @@ PORT = 4444
 
 HOME = os.environ['USERPROFILE'] if platform.system() == "Windows" else os.environ['HOME']
 DEVELOP_PATH = HOME + "/Develop/debugserver-js" # Set this to wherever the repo is
+RESOURCES_PATH = DEVELOP_PATH + "/tests/resources"
 
 
 CCS_PREFIX = "/Applications/ti/ccsv8"

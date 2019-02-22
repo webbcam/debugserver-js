@@ -101,6 +101,45 @@ Resets device (must be :ref:`connected<api:connect>`)
         "name": "reset"
     }
 
+flash
+-----
+
+Loads image into device's flash (must be :ref:`connected<api:connect>`)
+
++----------------+---------------+----------------------------------------------------+
+| **Request**                                                                         |
++================+===============+====================================================+
+| **Key**        | **Value**     | **Description**                                    |
++----------------+---------------+----------------------------------------------------+
+| "name"         | "flash"       | \-                                                 |
++----------------+---------------+----------------------------------------------------+
+| "args"         | "image"       | Path to image to load                              |
+|                +---------------+----------------------------------------------------+
+|                | "binary"      | Load image as binary (optional; default=false)     |
+|                +---------------+----------------------------------------------------+
+|                | "address"     | Address location to load binary image (optional)   |
++----------------+---------------+----------------------------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "flash",
+        "args": {
+            "image": "/path/to/image.hex"
+        }
+    }
+
+    //  Request (binary)
+    {
+        "name": "flash",
+        "args": {
+            "image": "/path/to/image.bin",
+            "binary": true,
+            "address": 0x10000000
+        }
+    }
+
 stop
 ----
 
