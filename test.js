@@ -13,7 +13,9 @@ package_info = JSON.parse(readFile(java.lang.System.getenv("DSS_SCRIPTING_ROOT")
 print("--- " + package_info.name + " (" + package_info.version + ")" + " ---");
 
 config = {
-    "cwd": "/path/to/repo/debugserver-js"   /* Currently not necessary */
+    "cwd": "/path/to/repo/debugserver-js",   /* Currently not necessary */
+    "debug": false
+
 };
 
 var port = 0; // By default if no port is provided, will use Java's automatic port allocation

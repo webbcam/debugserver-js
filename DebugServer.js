@@ -27,10 +27,16 @@ function DebugServer(cfg, socket) {
         this.configPath = cfg.ccxml;
     }
 
+    if (cfg.debug == true) {
+        this.script.traceSetConsoleLevel(TraceLevel.ALL);
+    }
+
     this.debugSessions = {};
 
     this.serverHandlers = {
-        "killServer": killServerCommandHandler,
+        "setTimeout": setTimeoutCommandHandler,
+        "getTimeout": getTimeoutCommandHandler,
+        "setConsoleLevel": setConsoleLevelCommandHandler,
         "setConfig": setConfigCommandHandler,
         "getConfig": getConfigCommandHandler,
         "createConfig": createConfigCommandHandler,
@@ -38,6 +44,7 @@ function DebugServer(cfg, socket) {
         "openSession": openSessionCommandHandler,
         "getListOfSessions": getListOfSessionsCommandHandler,
         "terminateSession": terminateSessionCommandHandler,
+        "killServer": killServerCommandHandler,
     };
 
     this.sessionHandlers = {
@@ -135,8 +142,23 @@ DebugServer.prototype.handleServerCommand = function(command) {
 
 /* Server Commands */
 
+function setTimeoutCommandHandler(server, command) {
+    server.script.setScriptTimeout(command.args.timeout);
+    return okResult();
+}
+
+function getTimeoutCommandHandler(server, command) {
+    var timeout = server.script.getScriptTimeout();
+    return okResult(timeout);
+}
+
 function killServerCommandHandler(server, command) {
     server.shutdown();
+    return okResult();
+}
+
+function setConsoleLevelCommandHandler(server, command) {
+    server.script.traceSetConsoleLevel(TraceLevel[command.args.level]);
     return okResult();
 }
 

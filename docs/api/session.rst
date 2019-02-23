@@ -60,7 +60,7 @@ Disconnect from the target
 erase
 -----
 
-Erases load on target (must be :ref:`connected<api:connect>`)
+Erases flash on target (must be :ref:`connected<api:connect>` to device)
 
 +----------------+---------------+----------------------------------+
 | **Request**                                                       |
@@ -82,7 +82,7 @@ Erases load on target (must be :ref:`connected<api:connect>`)
 reset
 -----
 
-Resets device (must be :ref:`connected<api:connect>`)
+Resets device (must be :ref:`connected<api:connect>` to device)
 
 +----------------+---------------+----------------------------------+
 | **Request**                                                       |
@@ -104,7 +104,7 @@ Resets device (must be :ref:`connected<api:connect>`)
 load
 -----
 
-Loads image into device's load (must be :ref:`connected<api:connect>`)
+Loads file into device's flash (must be :ref:`connected<api:connect>` to device)
 
 +----------------+---------------+----------------------------------------------------+
 | **Request**                                                                         |
@@ -113,7 +113,7 @@ Loads image into device's load (must be :ref:`connected<api:connect>`)
 +----------------+---------------+----------------------------------------------------+
 | "name"         | "load"        | \-                                                 |
 +----------------+---------------+----------------------------------------------------+
-| "args"         | "image"       | Path to image to load                              |
+| "args"         | "file"        | Path to file to load                               |
 |                +---------------+----------------------------------------------------+
 |                | "binary"      | Load image as binary (optional; default=false)     |
 |                +---------------+----------------------------------------------------+
@@ -126,7 +126,7 @@ Loads image into device's load (must be :ref:`connected<api:connect>`)
     {
         "name": "load",
         "args": {
-            "image": "/path/to/image.hex"
+            "file": "/path/to/image.hex"
         }
     }
 
@@ -134,10 +134,45 @@ Loads image into device's load (must be :ref:`connected<api:connect>`)
     {
         "name": "load",
         "args": {
-            "image": "/path/to/image.bin",
+            "file": "/path/to/image.bin",
             "binary": true,
             "address": 0x10000000
         }
+    }
+
+evaluate
+--------
+
+Evaluates an expression (must be :ref:`connected<api:connect>` to device)
+
++----------------+---------------+-------------------------------------------------------+
+| **Request**                                                                            |
++================+===============+=======================================================+
+| **Key**        | **Value**     | **Description**                                       |
++----------------+---------------+-------------------------------------------------------+
+| "name"         | "evaluate"    | \-                                                    |
++----------------+---------------+-------------------------------------------------------+
+| "args"         | "expression"  | Expression to evaluate                                |
+|                +---------------+-------------------------------------------------------+
+|                | "file"        | Path to symbols (.out) file to load first (optional)  |
++----------------+---------------+-------------------------------------------------------+
+
+.. code-block:: javascript
+
+    //  Request (with symbols)
+    {
+        "name": "evaluate",
+        "args": {
+            "expression": "&Sensor_msgStats",
+            "file": "/path/to/symbols.out",
+        }
+    }
+
+
+    //  Response
+    {
+        "status": "OK",
+        "data": 51234234
     }
 
 stop

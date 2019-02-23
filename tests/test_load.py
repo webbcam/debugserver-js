@@ -15,7 +15,7 @@ def test_session_basic_load(debug_server):
     d = {
         "name": "load",
         "args": {
-            "image": RESOURCES_PATH + "/sensor_cc1350lp.hex"
+            "file": RESOURCES_PATH + "/sensor_cc1350lp.hex"
         }
     }
     result = send_msg(s2, d)
@@ -39,7 +39,7 @@ def test_session_load_binary(debug_server):
     d = {
         "name": "load",
         "args": {
-            "image": RESOURCES_PATH + "/sensor_cc1350lp.bin",
+            "file": RESOURCES_PATH + "/sensor_cc1350lp.bin",
             "binary": True,
             "address": 0x0
         }
