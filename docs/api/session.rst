@@ -140,6 +140,45 @@ Loads file into device's flash (must be :ref:`connected<api:connect>` to device)
         }
     }
 
+verify
+------
+
+Verifies a file in device's memory (must be :ref:`connected<api:connect>` to device)
+
++----------------+---------------+----------------------------------------------------+
+| **Request**                                                                         |
++================+===============+====================================================+
+| **Key**        | **Value**     | **Description**                                    |
++----------------+---------------+----------------------------------------------------+
+| "name"         | "verify"      | \-                                                 |
++----------------+---------------+----------------------------------------------------+
+| "args"         | "file"        | Path to file to verify"                            |
+|                +---------------+----------------------------------------------------+
+|                | "binary"      | Verify image as binary (optional; default=false)   |
+|                +---------------+----------------------------------------------------+
+|                | "address"     | Address location to verify binary image (optional) |
++----------------+---------------+----------------------------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "verify",
+        "args": {
+            "file": "/path/to/image.hex"
+        }
+    }
+
+    //  Request (binary)
+    {
+        "name": "verify",
+        "args": {
+            "file": "/path/to/image.bin",
+            "binary": true,
+            "address": 0x10000000
+        }
+    }
+
 evaluate
 --------
 

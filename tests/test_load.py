@@ -71,3 +71,72 @@ def test_session_load_with_no_connection(debug_server):
 
     kill_server(s)
     s.close()
+
+def test_session_basic_verify(debug_server):
+    s = start_server()
+    s2 = start_session(s)
+
+    connect_to_target(s2)
+
+    d = {
+        "name": "load",
+        "args": {
+            "file": RESOURCES_PATH + "/sensor_cc1350lp.hex"
+        }
+    }
+    result = send_msg(s2, d)
+    assert_msg_ok(result)
+
+    d = {
+        "name": "verify",
+        "args": {
+            "file": RESOURCES_PATH + "/sensor_cc1350lp.hex"
+        }
+    }
+    result = send_msg(s2, d)
+    assert_msg_ok(result)
+
+    disconnect_from_target(s2)
+
+    stop_session(s2)
+    s2.close()
+
+    kill_server(s)
+    s.close()
+
+def test_session_verify_binary(debug_server):
+    s = start_server()
+    s2 = start_session(s)
+
+    connect_to_target(s2)
+
+    d = {
+        "name": "load",
+        "args": {
+            "file": RESOURCES_PATH + "/sensor_cc1350lp.bin",
+            "binary": True,
+            "address": 0x0
+        }
+    }
+    result = send_msg(s2, d)
+    assert_msg_ok(result)
+
+    d = {
+        "name": "verify",
+        "args": {
+            "file": RESOURCES_PATH + "/sensor_cc1350lp.bin",
+            "binary": True,
+            "address": 0x0
+        }
+    }
+    result = send_msg(s2, d)
+    assert_msg_ok(result)
+
+    disconnect_from_target(s2)
+
+    stop_session(s2)
+    s2.close()
+
+    kill_server(s)
+    s.close()
+

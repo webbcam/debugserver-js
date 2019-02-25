@@ -8,6 +8,7 @@ sessionHandlers = {
     "erase": eraseCommandHandler,
     "reset": resetCommandHandler,
     "load": loadCommandHandler,
+    "verify": verifyCommandHandler,
     "evaluate": evaluateCommandHandler,
     "readData": memoryReadDataCommandHandler,
     "writeData": memoryWriteDataCommandHandler,

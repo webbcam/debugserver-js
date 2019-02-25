@@ -106,3 +106,30 @@ function memoryWriteRegisterCommandHandler(session, command) {
         return failResult("Target is not connected");
     }
 }
+
+/**
+ * Verify function for verifying an image in a device's memory
+
+ * @param {session} DSS Session object
+ * @param {command} JSON object containing command name and args
+          {command.args.file} (String): the path to the image to verify
+          {command.args.binary} (Boolean): use binary verify (default = false)
+          {command.args.address} (Num): Address to verify binary image (required if binary = true)
+ */
+function verifyCommandHandler(session, command) {
+    if (session.target.isConnected()) {
+        try {
+            if (command.args['binary'] == true) {
+                session.memory.verifyBinaryProgram(command.args.file, command.args.address);
+            } else {
+                session.memory.verifyProgram(command.args.file);
+            }
+        } catch (err) {
+            return failResult(String(err));
+        }
+        return okResult()
+
+    } else {
+        return failResult("Target is not connected");
+    }
+}
