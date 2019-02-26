@@ -4,7 +4,7 @@ function failResult(message) {
     /* returns a json object for status FAIL */
     var result = { "status": "FAIL" };
 
-    if (message) {
+    if (message != undefined) {
         result["message"] = message;
     }
 
@@ -15,7 +15,7 @@ function okResult(data) {
     /* returns a json object for status OK */
     var result = { "status": "OK" };
 
-    if (data) {
+    if (data != undefined) {
         result["data"] = data;
     }
 
