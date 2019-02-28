@@ -4,6 +4,7 @@ load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/handlers/load.js");
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/handlers/evaluate.js");
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/handlers/memory.js");
 load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/handlers/options.js");
+load(java.lang.System.getenv("DSS_SCRIPTING_ROOT") + "/handlers/operations.js");
 
 sessionHandlers = {
     "erase": eraseCommandHandler,
@@ -17,4 +18,6 @@ sessionHandlers = {
     "writeRegister": memoryWriteRegisterCommandHandler,
     "setOption": setOptionCommandHandler,
     "getOption": getOptionCommandHandler,
+    "performOperation": performOperationCommandHandler,
+    "printSupportedOperations": printSupportedOperationsCommandHandler,
 }

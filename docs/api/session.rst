@@ -421,6 +421,37 @@ Set the value of a device option (must be :ref:`connected<api:connect>` to devic
         "status": "OK"
     }
 
+performOperation
+----------------
+
+Perform flash operation (must be :ref:`connected<api:connect>` to device)
+
++----------------+-------------------------+-------------------------------------------------------+
+| **Request**                                                                                      |
++================+=========================+=======================================================+
+| **Key**        | **Value**               | **Description**                                       |
++----------------+-------------------------+-------------------------------------------------------+
+| "name"         | "performOperation"      | \-                                                    |
++----------------+-------------------------+-------------------------------------------------------+
+| "args"         | "opcode"                | operation code for flash operation                    |
++----------------+-------------------------+-------------------------------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "performOperation",
+        "args": {
+            "opcode": "Erase",
+        }
+    }
+
+
+    //  Response
+    {
+        "status": "OK"
+    }
+
 stop
 ----
 
