@@ -1,4 +1,5 @@
 {
-    "name": "DebugServer-js",
-    "version": "1.0.0"
+    "name": "debugserver-js",
+    "author": "webbcam",
+    "version": "0.1.0"
 }

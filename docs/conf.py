@@ -18,15 +18,19 @@
 
 
 # -- Project information -----------------------------------------------------
+import json
 
-project = u'DebugServer-js'
+with open('../package.json') as f:
+    package_info = json.load(f)
+
+project = package_info['name']
 #copyright = u'2019, webbcam'
-author = u'webbcam'
+author = package_info['author']
 
 # The short X.Y version
-version = u''
+version = package_info['version']
 # The full version, including alpha/beta/rc tags
-release = u''
+release = version
 
 
 # -- General configuration ---------------------------------------------------
