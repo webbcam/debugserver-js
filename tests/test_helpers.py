@@ -17,9 +17,12 @@ def send_msg(s, d):
     """
     msg = json.dumps(d)
     s.sendall(b"%s\n" % msg.encode())
-    r = s.recv(1024)
-    result = json.loads(r)
 
+    r = bytearray()
+    while b'\n' not in r:
+        r.extend(s.recv(1024))
+
+    result = json.loads(r)
     return result
 
 def assert_msg_ok(result):
