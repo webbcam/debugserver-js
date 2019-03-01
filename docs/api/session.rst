@@ -3,7 +3,7 @@
 Session commands are sent over a socket connected to the respective session port
 (received when :ref:`opening a session<api:opensession>`)
 
-.. warning::
+.. important::
     You must first :ref:`open a session<api:opensession>` on the DebugServer
     and connect to it over a socket before sending any session commands.
 
@@ -450,6 +450,64 @@ Perform flash operation (must be :ref:`connected<api:connect>` to device)
     //  Response
     {
         "status": "OK"
+    }
+
+run
+---
+
+Issue run command to target device
+
++----------------+---------------+-------------------------------------------------------+
+| **Request**                                                                            |
++================+===============+=======================================================+
+| **Key**        | **Value**     | **Description**                                       |
++----------------+---------------+-------------------------------------------------------+
+| "name"         | "run"         | \-                                                    |
++----------------+---------------+-------------------------------------------------------+
+| "args"         | "async"       | run and return control immediately (default=False)    |
++----------------+---------------+-------------------------------------------------------+
+
+.. warning::
+    If "async" is set to **False**, this function will not return until one of the
+    following occur:
+
+      - target is halted due to hitting a breakpoint
+      - target hits end of program
+      - timeout
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "run",
+        "args": {
+            "async": True
+        }
+    }
+
+halt
+----
+
+Issue halt command to target device
+
++----------------+---------------+-------------------------------------------------------+
+| **Request**                                                                            |
++================+===============+=======================================================+
+| **Key**        | **Value**     | **Description**                                       |
++----------------+---------------+-------------------------------------------------------+
+| "name"         | "halt"        | \-                                                    |
++----------------+---------------+-------------------------------------------------------+
+| "args"         | "wait"        | wait until device is actually halted before returning |
++----------------+---------------+-------------------------------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "halt",
+        "args": {
+            "wait": True
+        }
     }
 
 stop
