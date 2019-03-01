@@ -41,6 +41,9 @@ function DebugServer(cfg, socket) {
         "getConfig": getConfigCommandHandler,
         "createConfig": createConfigCommandHandler,
         "getListOfCPUs": getListOfCPUsCommandHandler,
+        "getListOfDevices": getListOfDevicesCommandHandler,
+        "getListOfConnections": getListOfConnectionsCommandHandler,
+        "getListOfConfigurations": getListOfConfigurationsCommandHandler,
         "openSession": openSessionCommandHandler,
         "getListOfSessions": getListOfSessionsCommandHandler,
         "terminateSession": terminateSessionCommandHandler,
@@ -112,7 +115,7 @@ DebugServer.prototype.run = function() {
             }
 
             var result_str = JSON.stringify(result);
-            print(result_str);
+            print("Result JSON: " + result_str);
             output.println(result_str);
 
             line = input.readLine();
@@ -235,6 +238,48 @@ function getListOfCPUsCommandHandler(server, command) {
         var cpu_list = createStringArray(server.debugServer.getListOfCPUs());
 
         result = okResult(cpu_list)
+    }
+
+    return result;
+}
+
+function getListOfDevicesCommandHandler(server, command) {
+    var result;
+    if (server.configPath == null) {
+        result = failResult(command.name + ": CCXML must be set before retreiving a list of devices");
+    } else {
+        var configGenerator = server.debugServer.createTargetConfigurationGenerator();
+        var dev_list = createStringArray(configGenerator.getListOfDevices());
+
+        result = okResult(dev_list)
+    }
+
+    return result;
+}
+
+function getListOfConnectionsCommandHandler(server, command) {
+    var result;
+    if (server.configPath == null) {
+        result = failResult(command.name + ": CCXML must be set before retreiving a list of connections");
+    } else {
+        var configGenerator = server.debugServer.createTargetConfigurationGenerator();
+        var conn_list = createStringArray(configGenerator.getListOfConnections());
+
+        result = okResult(conn_list)
+    }
+
+    return result;
+}
+
+function getListOfConfigurationsCommandHandler(server, command) {
+    var result;
+    if (server.configPath == null) {
+        result = failResult(command.name + ": CCXML must be set before retreiving a list of devices");
+    } else {
+        var configGenerator = server.debugServer.createTargetConfigurationGenerator();
+        var cfg_list = createStringArray(configGenerator.getListOfConfigurations());
+
+        result = okResult(cfg_list)
     }
 
     return result;
