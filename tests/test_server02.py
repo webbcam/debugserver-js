@@ -1,7 +1,7 @@
 import pytest
 import time
 from test_helpers import create_socket, send_msg, assert_msg_ok
-import server01
+import test_server01 as server01
 
 
 
