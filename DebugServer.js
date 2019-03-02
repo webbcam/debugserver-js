@@ -21,6 +21,7 @@ function DebugServer(cfg, socket) {
     this.script = ScriptingEnvironment.instance();
 
     this.debugServer = this.script.getServer("DebugServer.1");
+    this.ccsServer = undefined;
 
     if (cfg.ccxml != undefined) {
         this.debugServer.setConfig(cfg.ccxml);
@@ -44,6 +45,7 @@ function DebugServer(cfg, socket) {
         "getListOfDevices": getListOfDevicesCommandHandler,
         "getListOfConnections": getListOfConnectionsCommandHandler,
         "getListOfConfigurations": getListOfConfigurationsCommandHandler,
+        "attachCCS": attachCCSCommandHandler,
         "openSession": openSessionCommandHandler,
         "getListOfSessions": getListOfSessionsCommandHandler,
         "terminateSession": terminateSessionCommandHandler,
@@ -280,6 +282,25 @@ function getListOfConfigurationsCommandHandler(server, command) {
         var cfg_list = createStringArray(configGenerator.getListOfConfigurations());
 
         result = okResult(cfg_list)
+    }
+
+    return result;
+}
+
+function attachCCSCommandHandler(server, command) {
+    var result;
+    if (server.configPath == null) {
+        result =  failResult(command.name + ": CCXML must be set before retreiving a list of devices");
+    } else if (server.ccsServer != undefined) {
+        result = failResult(command.name + ": CCS instance has already been attached");
+    } else {
+        try {
+            server.ccsServer = server.script.getServer("CCSServer.1");
+            server.ccsServer.openSession(".*");
+            result = okResult()
+        } catch (err) {
+            result = failResult(String(err));
+        }
     }
 
     return result;

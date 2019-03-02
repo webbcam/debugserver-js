@@ -2,8 +2,6 @@ import pytest
 import time
 from test_helpers import create_socket, send_msg, assert_msg_ok
 
-
-
 def test_server_set_console_log_command(debug_server):
     s = create_socket(connect=True)
     d = {

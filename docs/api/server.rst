@@ -501,6 +501,33 @@ Terminates the specified session.
         }
     }
 
+attachCCS
+---------
+
+Open and attach a CCS workbench to the Debug Session
+
+.. caution::
+    You can only attach a CCS workbench once per Debug Server. If you exit out
+    of the CCS IDE, you'll have to restart the Debug Server in order to attach
+    again.
+
++----------------+------------------------+----------------------------------+
+| **Request**                                                                |
++================+========================+==================================+
+| **Key**        | **Value**              | **Description**                  |
++----------------+------------------------+----------------------------------+
+| "name"         | "attachCCS"            | \-                               |
++----------------+------------------------+----------------------------------+
+| "args"         | \-                     | \-                               |
++----------------+------------------------+----------------------------------+
+
+.. code-block:: javascript
+
+    //  Request
+    {
+        "name": "attachCCS"
+    }
+
 killServer
 ----------
 
