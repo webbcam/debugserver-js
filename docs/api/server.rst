@@ -149,7 +149,7 @@ Returns the ccxml file the DebugServer is using
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | String                 | "OK" or "FAIL"                   |
+| "status"       | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | String                 | Path to ccxml file               |
 +----------------+------------------------+----------------------------------+
@@ -158,7 +158,7 @@ Returns the ccxml file the DebugServer is using
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": "/path/to/config.ccxml"
     }
 
@@ -203,7 +203,7 @@ Creates a ccxml configuration file
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | String                 | "OK" or "FAIL"                   |
+| "status"       | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | JSON object            | JSON object containing name of   |
 |                |                        | ccxml file and directory         |
@@ -213,7 +213,7 @@ Creates a ccxml configuration file
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": {
             "name": "config.ccxml",
             "directory": "/home/user/ti/CCSTargetConfigurations"
@@ -247,7 +247,7 @@ Returns a list of CPU names which can be used for starting a session.
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | String                 | "OK" or "FAIL"                   |
+| "status"       | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | Array                  | List of CPU names                |
 +----------------+------------------------+----------------------------------+
@@ -256,7 +256,7 @@ Returns a list of CPU names which can be used for starting a session.
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": ["Cortex_M3", "Cortex_M0"]
     }
 
@@ -287,7 +287,7 @@ Returns a list of device names which can be used for creating ccxml files.
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | String                 | "OK" or "FAIL"                   |
+| "status"       | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | Array                  | List of Device names             |
 +----------------+------------------------+----------------------------------+
@@ -296,7 +296,7 @@ Returns a list of device names which can be used for creating ccxml files.
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": ["CC1310F128", "CC1350F128"]
     }
 
@@ -327,7 +327,7 @@ Returns a list of connection names which can be used for creating ccxml files.
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | String                 | "OK" or "FAIL"                   |
+| "status"       | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | Array                  | List of Connection names         |
 +----------------+------------------------+----------------------------------+
@@ -336,7 +336,7 @@ Returns a list of connection names which can be used for creating ccxml files.
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": ["Texas Instruments XDS110 USB Debug Probe", "TI MSP430 USB1"]
     }
 
@@ -367,7 +367,7 @@ Returns a list of configuration (ccxml) file names.
 +================+========================+==================================+
 | **Key**        | **Value**              | **Description**                  |
 +----------------+------------------------+----------------------------------+
-| "state"        | String                 | "OK" or "FAIL"                   |
+| "status"       | String                 | "OK" or "FAIL"                   |
 +----------------+------------------------+----------------------------------+
 | "data"         | Array                  | List of configuration files      |
 +----------------+------------------------+----------------------------------+
@@ -376,7 +376,7 @@ Returns a list of configuration (ccxml) file names.
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": ["L2000FF.ccxml", "L4000XX.ccxml"]
     }
 
@@ -410,7 +410,7 @@ Opens a session for the given CPU
 +================+====================+==================================+
 | **Key**        | **Value**          | **Description**                  |
 +----------------+--------------------+----------------------------------+
-| "state"        | String             | "OK" or "FAIL"                   |
+| "status"       | String             | "OK" or "FAIL"                   |
 +----------------+--------------------+----------------------------------+
 | "data"         | Integer            | Port number session opened on    |
 +----------------+--------------------+----------------------------------+
@@ -419,7 +419,7 @@ Opens a session for the given CPU
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": 4444
     }
 
@@ -450,7 +450,7 @@ Returns a list of open sessions running on the DebugServer
 +================+===============================+==================================+
 | **Key**        | **Value**                     | **Description**                  |
 +----------------+-------------------------------+----------------------------------+
-| "state"        | String                        | "OK" or "FAIL"                   |
+| "status"       | String                        | "OK" or "FAIL"                   |
 +----------------+-------------------------------+----------------------------------+
 | "data"         | Array of JSON objects         | List of JSON objects             |
 |                |                               | containing open session names    |
@@ -461,7 +461,7 @@ Returns a list of open sessions running on the DebugServer
 
     // Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": [{
             "name": "Texas Instruments XDS110 USB Debug Probe/Cortex_M3",
             "port": 4445

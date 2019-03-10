@@ -46,7 +46,7 @@ always have a "name" field.
 Responses
 ---------
 Responses are sent back by the DebugServer after completing a Request. A Response
-will always have a "state" field which will either be "OK" (successful command)
+will always have a "status" field which will either be "OK" (successful command)
 or "FAIL" (failed command).
 
     - The "data" field is present when a successful command returns a value.
@@ -55,7 +55,7 @@ or "FAIL" (failed command).
 +----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
 | Key            | Type             | Description                      | Values                     | Present                              |
 +================+==================+==================================+============================+======================================+
-| "state"        | String           | Result of a command              | "OK" or "FAIL"             | Always                               |
+| "status"       | String           | Result of a command              | "OK" or "FAIL"             | Always                               |
 +----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
 | "data"         | Command specific | Return value of a command        | Depends on command         | When a command returns a value       |
 +----------------+------------------+----------------------------------+----------------------------+--------------------------------------+
@@ -66,14 +66,14 @@ or "FAIL" (failed command).
 
     //  Success Response
     {
-        "state": "OK",
+        "status": "OK",
         "data": <command return value>
     }
 
 
     //  Failure Response
     {
-        "state": "FAIL",
+        "status": "FAIL",
         "message": "Error message description"
     }
 
