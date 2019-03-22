@@ -33,7 +33,7 @@ def test_session_run_async(debug_server):
     d = {
         "name": "run",
         "args": {
-            "async": True
+            "asynchronous": True
         }
     }
     result = send_msg(s2, d)
