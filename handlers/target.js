@@ -14,7 +14,7 @@
 function runCommandHandler(session, command) {
     if (session.target.isConnected()) {
         try {
-            if (command.args && command.args.async) {
+            if (command.args && command.args.asynchronous) {
                 session.target.runAsynch();
             } else {
                 session.target.run();
