@@ -247,42 +247,30 @@ function getListOfCPUsCommandHandler(server, command) {
 
 function getListOfDevicesCommandHandler(server, command) {
     var result;
-    if (server.configPath == null) {
-        result = failResult(command.name + ": CCXML must be set before retreiving a list of devices");
-    } else {
-        var configGenerator = server.debugServer.createTargetConfigurationGenerator();
-        var dev_list = createStringArray(configGenerator.getListOfDevices());
+    var configGenerator = server.debugServer.createTargetConfigurationGenerator();
+    var dev_list = createStringArray(configGenerator.getListOfDevices());
 
-        result = okResult(dev_list)
-    }
+    result = okResult(dev_list)
 
     return result;
 }
 
 function getListOfConnectionsCommandHandler(server, command) {
     var result;
-    if (server.configPath == null) {
-        result = failResult(command.name + ": CCXML must be set before retreiving a list of connections");
-    } else {
-        var configGenerator = server.debugServer.createTargetConfigurationGenerator();
-        var conn_list = createStringArray(configGenerator.getListOfConnections());
+    var configGenerator = server.debugServer.createTargetConfigurationGenerator();
+    var conn_list = createStringArray(configGenerator.getListOfConnections());
 
-        result = okResult(conn_list)
-    }
+    result = okResult(conn_list)
 
     return result;
 }
 
 function getListOfConfigurationsCommandHandler(server, command) {
     var result;
-    if (server.configPath == null) {
-        result = failResult(command.name + ": CCXML must be set before retreiving a list of devices");
-    } else {
-        var configGenerator = server.debugServer.createTargetConfigurationGenerator();
-        var cfg_list = createStringArray(configGenerator.getListOfConfigurations());
+    var configGenerator = server.debugServer.createTargetConfigurationGenerator();
+    var cfg_list = createStringArray(configGenerator.getListOfConfigurations());
 
-        result = okResult(cfg_list)
-    }
+    result = okResult(cfg_list)
 
     return result;
 }

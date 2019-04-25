@@ -7,7 +7,7 @@ ENTRY_POINT="${SCRIPT_PATH}/test.js"
 ### Linux:
 #CCS_EXE_PATH=/opt/ti/ccsv8/eclipse/eclipse
 ### MacOS:
-CCS_EXE_PATH=/Applications/ti/ccsv8/eclipse/Ccstudio.app/Contents/MacOS/ccstudio
+CCS_EXE_PATH=/Applications/ti/ccs901/ccs/eclipse/Ccstudio.app/Contents/MacOS/ccstudio
 
 
 # Arg1: port number to use
@@ -17,4 +17,4 @@ else
     PORT=$1
 fi
 
-DSS_SCRIPTING_ROOT="${SCRIPT_PATH}" $CCS_EXE_PATH -noSplash -application com.ti.ccstudio.apps.runScript -ccs.script $ENTRY_POINT -ccs.rhinoArgs $PORT
+DSS_SCRIPTING_ROOT="${SCRIPT_PATH}" $CCS_EXE_PATH -noSplash -application com.ti.ccstudio.apps.runScript -data ./ -ccs.script $ENTRY_POINT -ccs.rhinoArgs $PORT
